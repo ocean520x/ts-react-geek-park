@@ -1,0 +1,15 @@
+@import '@/assets/styles/hairline.scss';
+
+.text-box-hairline {
+    width: 100px;
+    height: 100px;
+    background-color: tan;
+    @include hairline('all', #f00)
+}
+
+.text-box {
+    width: 100px;
+    height: 100px;
+    background-color: pink;
+    border: 1px solid #999;
+}

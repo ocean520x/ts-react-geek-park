@@ -1,4 +1,5 @@
 {
+  "extends":"./path.config.json",
   "compilerOptions": {
     "target": "es5",
     "lib": [
@@ -22,5 +23,5 @@
   },
   "include": [
     "src"
-  ]
+, "craco.config.js"  ]
 }
