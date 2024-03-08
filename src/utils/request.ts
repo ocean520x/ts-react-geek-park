@@ -1,7 +1,6 @@
 import axios from "axios";
-
+import { getTokenInfo } from '@/utils/storage'
 export const baseURL = 'http://geek.itheima.net'
-
 //创建axios实例
 const http = axios.create({
   baseURL,
@@ -10,7 +9,13 @@ const http = axios.create({
 
 //请求拦截器
 http.interceptors.request.use(
-  config => config,
+  (config: any) => {
+    //获取缓存中的Token信息
+    const { token } = getTokenInfo()
+    //设置请求头的Authorization字段
+    if (token) config.headers.Authorization = `Bearer ${token}`
+    return config
+  },
   error => Promise.reject(error)
 )
 

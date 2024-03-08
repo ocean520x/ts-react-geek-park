@@ -1,13 +1,11 @@
+import { getTokenInfo } from '@/utils/storage'
 export type Auth = {
     token: string
     refresh_token: string
 }
 const initState = {
     profile: { username: '游客' },
-    auth: {
-        token: '',
-        refresh_token: ''
-    }
+    auth: getTokenInfo()
 }
 
 //定义action类型

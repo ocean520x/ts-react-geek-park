@@ -8,6 +8,7 @@ import { Toast } from 'antd-mobile';
 import { sendCodesAPI,AuthorizationsAPI } from '@/store/action/user';
 import {AppDispatch} from '@/store'
 import { useEffect, useRef, useState } from 'react';
+import {useNavigate} from 'react-router-dom'
 type FormValues= {
     mobile:string
     code:string
@@ -45,14 +46,18 @@ export default function Login() {
             clearInterval(timerId.current)
         }
     },[])
+    const navigate=useNavigate()
     const formik=useFormik({
         initialValues:{
             mobile:'13911111111',
             code:'123456'
         } as FormValues ,
-        onSubmit:(values)=>{
+        onSubmit:async(values)=>{
             console.log('values',values)
-            dispatch(AuthorizationsAPI(values))
+           await dispatch(AuthorizationsAPI(values))
+           Toast.show({content:'登陆成功'})
+           navigate('/')
+
         },
         validationSchema:Yup.object().shape({
             //手机号校验
