@@ -1,5 +1,11 @@
-export default function Layout () {
+/** @format */
+
+import Icon from '@/components/Icon'
+import NavBar from '@/components/NavBar'
+export default function Layout() {
     return (
-        <h1>我是布局容器组件</h1>
+        <div>
+            <NavBar right={<Icon type="iconbtn_channel"></Icon>}>登陆</NavBar>
+        </div>
     )
 }

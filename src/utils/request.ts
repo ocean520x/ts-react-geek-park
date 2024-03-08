@@ -1,31 +1,24 @@
-import axios from 'axios'
+import axios from "axios";
 
-// 请求基地址
 export const baseURL = 'http://geek.itheima.net'
 
+//创建axios实例
 const http = axios.create({
-  baseURL: baseURL,
-  timeout: 5000,
+  baseURL,
+  timeout: 5000
 })
 
-// 请求拦截器
+//请求拦截器
 http.interceptors.request.use(
-  function (config) {
-    return config
-  },
-  function (error) {
-    return Promise.reject(error)
-  },
+  config => config,
+  error => Promise.reject(error)
 )
 
-// 响应拦截器
+//响应拦截器
 http.interceptors.response.use(
-  function (response) {
-    return response.data
-  },
-  function (error) {
-    return Promise.reject(error)
-  },
+  response => response.data,
+  error => Promise.reject(error)
 )
 
+//导出axios实例
 export default http

@@ -1,0 +1,44 @@
+/** @format */
+
+@import '@/assets/styles/hairline.scss';
+.root {
+    height: 46px;
+    :global {
+        .main {
+            height: 46px;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            //1px 项目边框处理
+            @include hairline('bottom', #ccc);
+        }
+        .fixed {
+            position: fixed;
+            z-index: 999;
+        }
+        .left {
+            width: 48px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .icon {
+            font-size: 16px;
+            color: #ddd;
+        }
+        .title {
+            flex: 1;
+            margin: 0 auto;
+            color: #323233;
+            font-weight: 500;
+            font-size: 16px;
+            text-align: center;
+        }
+        .right {
+            padding-right: 16px;
+            width: 48px;
+        }
+    }
+}
