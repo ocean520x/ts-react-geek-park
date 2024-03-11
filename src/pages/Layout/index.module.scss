@@ -1,0 +1,20 @@
+@import '@/assets/styles/hairline.scss';
+
+.root {
+  height: 100vh;
+
+  :global {
+    .tab-content {
+      height: 92vh;
+    }
+
+    .geek-tabbar {
+      position: fixed;
+      z-index: 100;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      @include hairline(top,#ddd)
+    }
+  }
+}

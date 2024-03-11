@@ -80,3 +80,12 @@ textarea {
   fill: currentColor;
   overflow: hidden;
 }
+// 全局修改antd-mobile默认的主题色
+:root:root {
+--adm-color-primary:#fc6627
+}
+
+//局部修改anti-mobile的主题色 -相当于限制在某个类名之下
+.geek-color {
+  --adm-color-primary:#fc6627
+}

@@ -27,3 +27,20 @@ export const AuthorizationsAPI = ({ mobile, code }: { mobile: string, code: stri
     setTokenInfo(res.data)
   }
 }
+
+//获取用户信息
+export const getUserInfoAPI = () => {
+  return async (dispatch: AppDispatch) => {
+    const res = await http.get(`/v1_0/user`)
+    dispatch({ type: 'user/saveUserInfo', payload: res.data })
+  }
+}
+
+//获取用户个人资料
+export const getUserProfileAPI = () => {
+  return async (dispatch: AppDispatch) => {
+    const res = await http.get(`/v1_0/user/profile`)
+    console.log('获取用户个人资料', res);
+    dispatch({ type: 'user/saveUserProfile', payload: res.data })
+  }
+}

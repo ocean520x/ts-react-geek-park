@@ -1,0 +1,107 @@
+.root {
+  :global {
+    .content {
+      height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+
+    .wrapper {
+      background-color: #f7f8fa;
+    }
+
+    .profile-list {
+      font-size: 14px;
+
+      .avatar {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        object-fit: cover;
+        vertical-align: middle;
+      }
+
+      .intro {
+        color: #c8c9cc;
+
+        &.normal {
+          color: #3a3948;
+        }
+      }
+    }
+
+    .avatar-upload {
+      display: none;
+    }
+
+    .logout {
+      position: absolute;
+      bottom: 25px;
+      width: 100%;
+      height: 44px;
+      padding: 0 16px;
+
+      .btn {
+        width: 100%;
+        height: 100%;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 16px;
+        background: linear-gradient(315deg,#fe4f4f,#fc6627);
+      }
+    }
+  }
+}
+
+:global {
+  .popup-bottom-list {
+    padding: 10px 0;
+    background-color: #fff;
+    border-radius: 10px 10px 0 0;
+
+    .list-item {
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      font-size: 16px;
+      color: #333;
+
+      &:active {
+        background-color: #f2f3f5;
+      }
+
+      &:last-child {
+        color: #a5a6ab;
+        height: 58px;
+        &::before {
+          content:'';
+          display: block;
+          height: 8px;
+          background-color: #f3f3f3;
+        }
+      }
+    }
+  }
+
+  //右侧弹出层
+  .popup-right {
+    width: 100%;
+    background-color: #f4f4f4;
+    .submit-btn {
+      color: var(--adm-color-primary);
+    }
+    .edit-content {
+      padding: 20px;
+      .edit-title {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .edit-input {
+        height: 44px;
+        padding-left: 16px;
+        background-color: #fff;
+      }
+    }
+  }
+}
