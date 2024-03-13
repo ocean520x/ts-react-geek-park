@@ -31,7 +31,7 @@ const initState = {
 }
 
 //定义action类型
-export type UserAction = { type: 'user/saveAuth', payload: Auth } | { type: 'user/saveUserInfo', payload: User } | { type: 'user/saveUserProfile', payload: UserProfile }
+export type UserAction = { type: 'user/saveAuth', payload: Auth } | { type: 'user/saveUserInfo', payload: User } | { type: 'user/saveUserProfile', payload: UserProfile } | { type: 'user/removeAuth' }
 export function userReducer(state = initState, action: UserAction) {
     switch (action.type) {
         case 'user/saveAuth':
@@ -40,6 +40,8 @@ export function userReducer(state = initState, action: UserAction) {
             return { ...state, user: action.payload }
         case 'user/saveUserProfile':
             return { ...state, profile: action.payload }
+        case 'user/removeAuth':
+            return { ...state, auth: { token: '', refresh_token: '' } }
         default:
             return state
     }

@@ -1,6 +1,7 @@
 import http from '@/utils/request'
 import { AppDispatch } from '../index'
 import { setTokenInfo } from '@/utils/storage'
+import { Profile } from '../reducers/user'
 /**
  * 发送验证码
  * @param mobile 手机号
@@ -42,5 +43,21 @@ export const getUserProfileAPI = () => {
     const res = await http.get(`/v1_0/user/profile`)
     console.log('获取用户个人资料', res);
     dispatch({ type: 'user/saveUserProfile', payload: res.data })
+  }
+}
+
+//修改用户个人资料
+export const updateProfileAPI = (data: Partial<Profile>) => {
+  return async () => {
+    const res = await http.patch('/v1_0/user/profile', data)
+    console.log('修改用户个人资料', res);
+  }
+}
+
+// 上传用户头像
+export const updatePhotoAPI = (formData: FormData) => {
+  return async () => {
+    const res = await http.patch('/v1_0/user/photo', formData)
+    console.log('上传用户头像', res);
   }
 }
