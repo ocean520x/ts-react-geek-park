@@ -13,7 +13,7 @@ type FormValues= {
     mobile:string
     code:string
 }
-export default function Login() {
+export default function Login() {  
     const dispatch:AppDispatch=useDispatch()
     const [second,setSecond]=useState(0)
     const timerId=useRef(-1)

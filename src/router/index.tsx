@@ -1,5 +1,6 @@
 import React from 'react';
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter,Navigate } from 'react-router-dom';
+import { hasToken } from '@/utils/storage';
 //引入路由组件
 const Login = React.lazy(() => import('@/pages/Login'))
 const Layout = React.lazy(() => import('@/pages/Layout'))
@@ -14,6 +15,7 @@ const Article=React.lazy(()=>import('@/pages/Article'))
 const ProfileEdit=React.lazy(()=>import('@/pages/Profile/Edit'))
 const ProfileFeedback=React.lazy(()=>import('@/pages/Profile/Feedback'))
 const ProfileChat=React.lazy(()=>import('@/pages/Profile/Chat'))
+
 //创建路由
 export const router = createBrowserRouter([
   {
@@ -42,7 +44,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'profile',
-        element: <Profile/>
+        element: hasToken()?<Profile/>:<Navigate to="/login" state={{from:'layout/profile'}}  replace />
       }
     ]
   },
@@ -60,15 +62,15 @@ export const router = createBrowserRouter([
   },
   {
     path:'/profile/edit',
-    element:<ProfileEdit />
+    element:hasToken()?<ProfileEdit />:<Navigate to="/login" state={{from:'profile/edit'}} replace />
   },
   {
     path:'/profile/feedback',
-    element:<ProfileFeedback />
+    element:hasToken()?<ProfileFeedback />:<Navigate to="/login" state={{from:'profile/feedback'}} replace />
   },
   {
     path:'/profile/chat',
-    element:<ProfileChat />
+    element:hasToken()?<ProfileChat />:<Navigate to="/login" state={{from:'profile/chat'}} replace />
   },
   {
     path: '*',

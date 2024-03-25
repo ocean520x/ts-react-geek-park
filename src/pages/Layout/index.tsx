@@ -4,6 +4,7 @@ import Icon from '@/components/Icon'
 import { TabBar } from 'antd-mobile'
 import styles from './index.module.scss'
 import { useNavigate,useLocation, Outlet} from 'react-router-dom'
+// import {hasToken} from '@/utils/storage'
 export default function Layout() {
     //定义一个代表 tabbar的数组 用于动态渲染tabbar
     const tabs=[
@@ -40,7 +41,14 @@ export default function Layout() {
           <TabBar 
           className='tabbar' 
           activeKey={location.pathname}
-          onChange={(key)=>navigate(key)}
+          onChange={(key)=>{
+            // if(key==='/layout/profile'&&!hasToken()) {
+            //   console.log('notken');
+            //    navigate('/login')
+            //    return
+            // }
+            navigate(key)
+          }}
           >
             {tabs.map((item)=>
             (<TabBar.Item key={item.key} icon={item.icon} title={item.title} />)
