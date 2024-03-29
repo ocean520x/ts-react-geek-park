@@ -4,6 +4,7 @@ import Icon from '@/components/Icon'
 import { TabBar } from 'antd-mobile'
 import styles from './index.module.scss'
 import { useNavigate,useLocation, Outlet} from 'react-router-dom'
+import AuthRoute from '@/components/AuthRoute'
 // import {hasToken} from '@/utils/storage'
 export default function Layout() {
     //定义一个代表 tabbar的数组 用于动态渲染tabbar
@@ -35,7 +36,9 @@ export default function Layout() {
         <div className={styles.root}>
           {/* 区域一 点击按钮切换显示内容的区域 */}
           <div className="tab-content">
-            <Outlet />
+            <AuthRoute>
+              <Outlet />
+            </AuthRoute>
           </div>
           {/* 区域二 按钮区域 会使用固定定位显示在页面底部 */}
           <TabBar 

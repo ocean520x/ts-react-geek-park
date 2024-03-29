@@ -1,5 +1,5 @@
 import { Auth } from '@/store/reducers/user'
-
+import { Channel } from '@/store/reducers/channel'
 //用户Token的本地缓存key名
 const TOKEN_KEY = 'geek-park-h5'
 
@@ -30,4 +30,21 @@ export const removeTokenInfo = (): void => {
  */
 export const hasToken = (): boolean => {
   return Boolean(getTokenInfo().token)
+}
+
+const CHANNEL_KEY = 'itcast-geek-park-channel'
+
+//保存频道数据到本地
+export const setLocalChannels = (channels: Channel[]) => {
+  localStorage.setItem(CHANNEL_KEY, JSON.stringify(channels))
+}
+
+//从本地获取频道数据
+export const getLocalChannels = (): Channel[] => {
+  return JSON.parse(localStorage.getItem(CHANNEL_KEY) || '[]')
+}
+
+//删除本地频道数据
+export const removeLocalChannels = () => {
+  localStorage.removeItem(CHANNEL_KEY)
 }

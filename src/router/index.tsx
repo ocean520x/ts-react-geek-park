@@ -1,6 +1,5 @@
 import React from 'react';
-import { createBrowserRouter,Navigate } from 'react-router-dom';
-import { hasToken } from '@/utils/storage';
+import { createBrowserRouter } from 'react-router-dom';
 //引入路由组件
 const Login = React.lazy(() => import('@/pages/Login'))
 const Layout = React.lazy(() => import('@/pages/Layout'))
@@ -44,7 +43,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'profile',
-        element: hasToken()?<Profile/>:<Navigate to="/login" state={{from:'layout/profile'}}  replace />
+        element: <Profile/>
       }
     ]
   },
@@ -62,15 +61,15 @@ export const router = createBrowserRouter([
   },
   {
     path:'/profile/edit',
-    element:hasToken()?<ProfileEdit />:<Navigate to="/login" state={{from:'profile/edit'}} replace />
+    element:<ProfileEdit />
   },
   {
     path:'/profile/feedback',
-    element:hasToken()?<ProfileFeedback />:<Navigate to="/login" state={{from:'profile/feedback'}} replace />
+    element:<ProfileFeedback />
   },
   {
     path:'/profile/chat',
-    element:hasToken()?<ProfileChat />:<Navigate to="/login" state={{from:'profile/chat'}} replace />
+    element:<ProfileChat />
   },
   {
     path: '*',

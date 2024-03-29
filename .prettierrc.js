@@ -1,5 +1,4 @@
 module.exports = {
-  "parser": "@typescript-eslint/parser",
   "printWidth": 120,
   "semi": false,
   "singleQuote": true,
