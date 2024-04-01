@@ -48,3 +48,18 @@ export const getLocalChannels = (): Channel[] => {
 export const removeLocalChannels = () => {
   localStorage.removeItem(CHANNEL_KEY)
 }
+
+//搜索关键字的本地缓存key名
+const SEARCH_HIS_KEY = 'itcast_history'
+//从缓存获取搜索历史关键字
+export const getLocalHistories = (): string[] => {
+  return JSON.parse(localStorage.getItem(SEARCH_HIS_KEY) || '[]')
+}
+//将搜索关键字存入缓存
+export const setLocalHistories = ((histories: string[]) => {
+  localStorage.setItem(SEARCH_HIS_KEY, JSON.stringify(histories))
+})
+//删除本地缓存中的搜索关键字
+export const removeLocalHistories = () => {
+  localStorage.removeItem(SEARCH_HIS_KEY)
+}

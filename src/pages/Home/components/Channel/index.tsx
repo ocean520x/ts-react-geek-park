@@ -7,8 +7,10 @@ import styles from './index.module.scss'
 import Icon from "@/components/Icon"
 import {differenceBy} from 'lodash'
 import { Channel as ChannelType } from "@/store/reducers/channel"
+import { useNavigate } from "react-router-dom"
 export default function Channel() {
   const dispatch:AppDispatch=useDispatch()
+  const navigate=useNavigate()
   useEffect(()=>{
     dispatch(getUserChannelsAction())
     dispatch(getAllChannelAction())
@@ -46,7 +48,7 @@ export default function Channel() {
         {userList.map((item)=>(<Tabs.Tab title={item.name} key={item.id} />))}
       </Tabs>
       <div className="right">
-        <Icon type="iconbtn_search"/>
+        <Icon type="iconbtn_search" onClick={()=>navigate('/search')}/>
         <Icon type="iconbtn_channel" onClick={()=>setVisible(true)} />
       </div>
       <Popup visible={visible} position="left" bodyClassName={styles.channelPopup}>
