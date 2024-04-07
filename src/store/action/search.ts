@@ -1,4 +1,4 @@
-import { getSuggestionAPI } from "@/api/search"
+import { getSearchResultAPI, getSuggestionAPI } from "@/api/search"
 import { AppDispatch } from ".."
 import { SearchAction } from "../reducers/search"
 
@@ -20,3 +20,12 @@ export const saveHistoriesAction = (payload: string): SearchAction => {
 export const clearHistoriesAction = (payload: null): SearchAction => {
   return { type: 'search/clearHistories', payload }
 }
+
+export const getResultsAction = (keyword: string, page = 1, per_page = 10) => {
+  return async (dispatch: AppDispatch) => {
+    const res = await getSearchResultAPI({ keyword, page, per_page })
+    dispatch({ type: 'search/saveResults', payload: res.data.results })
+  }
+}
+
+export const clearResultsAction = (): SearchAction => ({ type: 'search/clearResults', payload: null })
