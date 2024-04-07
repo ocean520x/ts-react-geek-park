@@ -1,0 +1,9 @@
+.root {
+  :global {
+    .channel-list {
+      height: calc(100vh - 90px);
+      overflow: auto;
+      padding: 0 2vw 0 4vw;
+    }
+  }
+}
